@@ -1,43 +1,48 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getArticleById } from "../apifunctions"
+import { getArticleById, getVotes } from "../apifunctions"
 import ArticleCards from "./ArticleCards"
 import { alterServerVotes } from "../apifunctions"
+import UpvoteButton from "./UpvoteButton"
 
 
 const SingleArticle = () => {
 
     const [article, setArticle] = useState([])
     const {article_id} = useParams()
-    const [isLoading, setIsLoading] = useState(false)
-   
-    const [votes, setVotes] = useState(0)
+    const [isLoading, setIsLoading] = useState(true)
+    const [votes, setVotes] = useState(0)  
 
-    useEffect(() => {
-        
-        alterServerVotes(votes, article_id)
-        .then(({data: {articles}}) => {
-           
-            setVotes(articles.votes)
+ 
+
+    const updateVotes = () => {
+
+        setVotes((votes) => votes+1)
+        alterServerVotes(article_id, votes)
+        .then(({data: {articles}})=> {
+            
+            return setVotes(articles.votes)
         })
-        
-    }, [votes])
 
+      } 
+ console.log(votes)
 
 useEffect(() => {
 
     getArticleById(article_id)
     .then(({data: {articles}}) => {
+       return setArticle(articles)
        
-
-        setArticle(articles)
-
     })
     .catch((err) => {
         
     })
 }, [article_id])
 
+// if (isLoading){
+//     return <h2>Loading...</h2>
+// }
+console.log(votes)
 
 return (
 
@@ -54,10 +59,14 @@ return (
             <p id="topic"> Topic: {article.topic} </p>
             <p id="earticleauthor">Posted by {article.author} </p>
             
+ 
+ <UpvoteButton articlevotes={article.votes}/>
+
+
  <div className="votemiddle"><h2>Votes: {votes}</h2> </div>
-        <button className="vote" id="like" onClick={() => {setVotes(votes+1)}}>Like</button>
+        <button className="vote" id="like" onClick={updateVotes}>Like</button>
             
-        <button className="vote" id="dislike" onClick={() => {setVotes(votes-1)}}>Dislike </button>
+        <button className="vote" id="dislike" onClick={updateVotes}>Dislike </button>
         </article>
             </div>           
                   

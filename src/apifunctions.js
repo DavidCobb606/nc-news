@@ -22,11 +22,11 @@ export const getArticleById = (article_id) => {
     })    
 }
 
-export const alterServerVotes = (votes, article_id) => {
+export const alterServerVotes = (article_id, votes, setVotes) => {
 
-    return axios.patch(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}`, {inc_votes: votes })
+    return axios.patch(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}`, {inc_votes: votes+1 })
     .then((res) => {
-     
-        return res
+     console.log(res.data.articles.votes)
+       return res
         })
 }
