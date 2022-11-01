@@ -9,3 +9,9 @@ export const getAllArticles = () => {
     })
 
 }
+
+export const getArticlesByTopic = (topic_id) => {
+
+    return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/?topic=${topic_id}`)
+
+}
