@@ -3,9 +3,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Header from "./components/Header"
 import Nav from "./components/Nav"
 import ArticleList from "./components/ArticleList";
-import FootballArticles from "./components/FootballArticles";
-import CodingArticles from "./components/CodingArticles";
-import CookingArticles from "./components/CookingArticles";
+import ArticlesByTopic from "./components/ArticlesByTopic";
 import { useState, useEffect } from "react";
 import { getAllArticles } from "./apifunctions";
 
@@ -31,9 +29,7 @@ function App() {
       <Nav/>
 
       <Routes>      
-      <Route path="/topics/football" element={<FootballArticles articles={articles}/>}/>
-      <Route path="/topics/coding" element={<CodingArticles articles={articles}/>}/>
-      <Route path="/topics/cooking" element={<CookingArticles articles={articles}/>}/>
+      <Route path="/topics/:topic_id" element={<ArticlesByTopic articles={articles}/>}/>
       <Route path="/" element={<ArticleList articles={articles} />}/>
       </Routes>    
     
