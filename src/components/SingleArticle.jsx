@@ -22,7 +22,7 @@ const SingleArticle = () => {
         })
         
     }, [votes])
-  console.log(votes)
+
 
 useEffect(() => {
 
@@ -59,17 +59,9 @@ return (
             
         <button className="vote" id="dislike" onClick={() => {setVotes(votes-1)}}>Dislike </button>
         </article>
-       
-
-       
-  
-
-
-            </div>
-            
+            </div>           
                   
-        })}
-        
+        })}        
     </ul>
 
 </div>

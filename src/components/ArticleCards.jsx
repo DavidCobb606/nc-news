@@ -3,10 +3,7 @@ import { Link } from "react-router-dom"
 
 const ArticleCards = ({article}) => {
 
-    const goToArticle = (event) => {
-        return <Link id="goToArticle" key={10} to={`/articles/${article.article_id}`}></Link>
-    }
-    console.log(article.article_id)
+  
     return(
 
         <div>
