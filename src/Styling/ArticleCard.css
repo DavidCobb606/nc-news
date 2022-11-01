@@ -28,3 +28,69 @@ border-color: lightcoral
     text-align: left
 
 }
+
+#articlecard {
+    border-style: solid;
+    border-width: 5px;
+    padding: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-color: lightcoral;
+    background-color: whitesmoke
+    
+}
+
+#articletitle{
+font-size: 22px;
+font-weight: bold;
+text-align: center;
+text-decoration: underline 2px;
+border-style: transparent;
+border-width: 0.2px;
+margin-left: 25%;
+margin-right: 25%;
+border-color: lightcoral
+
+}
+
+#articlebody{
+    text-align: left
+
+}
+
+.votemiddle{
+    text-align:center;
+    position: relative;
+    margin-left: 45%;
+    margin-right: 45%;
+    padding: 0;
+    position: relative
+}
+
+.vote{
+    background-color: lightcoral;
+    line-height: 20px;
+    font-size: 16px;
+    text-align: center;
+    padding: 2px 8px;
+    margin-left: 20%;
+    position: relative;
+    margin-right: 10%;
+    touch-action: manipulation;
+    transition: box-shadow .3s, -ms-transform .2s, -webkit-transform .2s, transform .2s;
+    width: auto;
+    opacity: 1
+}
+
+#like:hover{
+   opacity: 0.8;
+   background-color: lightgreen
+}
+
+#dislike:hover{
+    opacity: 0.8;
+    background-color: crimson;
+    /* color: whitesmoke */
+}
