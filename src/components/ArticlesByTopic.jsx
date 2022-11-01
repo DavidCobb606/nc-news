@@ -6,26 +6,39 @@ import ArticleCards from "./ArticleCards";
 const ArticlesByTopic = ({articles}) => {
 
   const [topic, setTopic] = useState([]);
+  const [err, setErr] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const {topic_id} = useParams()
 
-  console.log(topic_id)
   useEffect(() => {
 
     getArticlesByTopic(topic_id)
     .then(({data: {articles}}) => {
-        console.log(articles)
+        setTopic(articles)
+        setIsLoading(false)
+    })
+    .catch((err) => {
+        setErr(true)
     })
 
-  })
+  }, [topic_id])
   
+  if(err){
+    
+    return <h1>Bad Request</h1>
+  }
+
+
+  if (isLoading){
+    return <h2> Loading...</h2>
+  }
+ 
   return(
 <div>
     <h1> {topic_id} Articles</h1>
     <ul>
-        {articles.map((article, index) => {
-            if (article.topic===topic_id){
-                return <ArticleCards key={index} article={article}/>
-            }
+        {topic.map((article, index) => {           
+            return <ArticleCards key={index} article={article}   />            
         })}
         
     </ul>

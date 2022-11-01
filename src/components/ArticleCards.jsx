@@ -11,8 +11,6 @@ const ArticleCards = ({article}) => {
             <p id="articleauthor">Posted by {article.author} </p>
 
 
-
-
         </article>
 
 

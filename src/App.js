@@ -19,6 +19,7 @@ function App() {
          setIsLoading(false)
       }) 
    }, [isLoading])
+   //getAllArticles gets all the articles which may be a problem when looking at specific topics since if we don't get the correct topics it won't send us an error. 
 
    if (isLoading) return (<p> Loading...</p>)
 
