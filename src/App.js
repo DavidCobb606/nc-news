@@ -7,6 +7,7 @@ import ArticlesByTopic from "./components/ArticlesByTopic";
 import { useState, useEffect } from "react";
 import { getAllArticles } from "./apifunctions";
 
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
   const [articles, setArticles] = useState("")
@@ -33,6 +34,15 @@ function App() {
       <Route path="/topics/:topic_id" element={<ArticlesByTopic articles={articles}/>}/>
       <Route path="/" element={<ArticleList articles={articles} />}/>
       </Routes>    
+      
+      <Routes>
+      <Route path="/" element={<ArticleList/>}/>
+      <Route path="/articles/:article_id" element={<SingleArticle/>}/>
+      </Routes>
+      
+      
+      
+      </BrowserRouter>
     
     </div>
   );
