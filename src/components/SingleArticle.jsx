@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticleById } from "../apifunctions"
+import ArticleCards from "./ArticleCards"
 
 
 const SingleArticle = () => {
 const [article, setArticle] = useState([])
 const {article_id} = useParams()
+const [isLoading, setIsLoading] = useState(false)
 console.log(article_id)
 
 useEffect(() => {
@@ -15,25 +17,40 @@ useEffect(() => {
         console.log(articles)
 
         setArticle(articles)
+
     })
     .catch((err) => {
         console.log(err)
     })
 }, [article_id])
-console.log(article)
+console.log(article.title)
 
 return (
 
 <div>
 
-    <h2>Rendering {article_id} </h2>
+    
+    <ul>
+        {article.map((article, index) => {           
+            return <div>
+               
+                   <article id="articlecard">
+            <p id="articletitle"><b><em>{article.title}</em></b></p>
+            <span id="articlebody">{article.body} </span>
+            <p id="topic"> topic: {article.topic} </p>
+            <p id="earticleauthor">Posted by {article.author} </p>
+            
 
-  {
-    article.map((element) => {
-        return element
-    })
+        </article>
 
-  }
+
+            </div>
+            
+                  
+        })}
+        
+    </ul>
+
 </div>
 
 )

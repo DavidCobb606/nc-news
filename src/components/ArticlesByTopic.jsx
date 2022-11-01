@@ -23,11 +23,9 @@ const ArticlesByTopic = ({articles}) => {
 
   }, [topic_id])
   
-  if(err){
-    
+  if(err){    
     return <h1>Bad Request</h1>
   }
-
 
   if (isLoading){
     return <h2> Loading...</h2>
