@@ -1,7 +1,7 @@
 import "../Styling/ArticleCard.css"
 
 const ArticleCards = ({article}) => {
-
+console.log(article)
     return(
 
         <article id="articlecard">

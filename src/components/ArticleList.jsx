@@ -3,19 +3,44 @@ import {useEffect, useState} from "react";
 import {getAllArticles} from "../apifunctions"
 import ArticleCards from "./ArticleCards";
 
-const ArticleList = ({articles}) => {
+const ArticleList = () => {
+   const [articles, setArticles] = useState("")
+   const [isLoading, setIsLoading] = useState(true)
 
-return(     
- <div>
-    <h1>All Articles</h1>
-    <ul>    
+ useEffect(() => {
+  getAllArticles()
+    .then(({data: {articles}}) => {
+              setArticles(articles)
+       
+        setIsLoading(false)
+    })
+  
+
+ }, [isLoading])
+   
+  
+if (isLoading) return (<p>Loading...</p>)
+
+return(
+<div>
+    <ul> 
+
         {articles.map((article, index) => {
-            return  <ArticleCards key={index} article={article} />
-                  
-            })}
+            
+            return  <ArticleCards key={index} article={article}/>
+            
+           
+        })}
+
     </ul>
- </div>
+ 
+
+
+</div>
+
+
 )
+
 }
 
 export default ArticleList
