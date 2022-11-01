@@ -8,16 +8,24 @@ export const getAllArticles = () => {
     })
 }
 
-
-
 export const getArticlesByTopic = (topic_id) => {
 
     return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/?topic=${topic_id}`)
 }
+
+
 export const getArticleById = (article_id) => {
     return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}`)
     .then((res) =>{
-        console.log(res)
+        
         return res
     })    
+}
+
+export const getCommentsForArticles = (article_id) => {
+    return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}/comments`)
+    .then((res) => {
+        console.log(res.data.articles)
+        return res
+    })
 }
