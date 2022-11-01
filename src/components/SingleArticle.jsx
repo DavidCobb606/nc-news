@@ -41,7 +41,6 @@ useEffect(() => {
 return (
 
 <div>
-
     
     <ul> 
         {article.map((article, index) => {           

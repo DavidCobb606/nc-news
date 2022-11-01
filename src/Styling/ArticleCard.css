@@ -43,3 +43,56 @@ h2{
     font-size: 35px;
     text-decoration: underline 2px;
 }
+
+.votemiddle{
+    text-align:center;
+    position: relative;
+    margin-left: 45%;
+    margin-right: 45%;
+    padding: 0;
+    position: relative
+}
+#seearticlebutton{
+    background-color: lightcoral;
+    line-height: 20px;
+    font-size: 16px;
+    text-align: center;
+    padding: 2px 8px;
+    margin-left: 40%;
+    margin-right:45%;
+    position: relative;
+    margin-right: 10%;
+    touch-action: manipulation;
+    transition: box-shadow .3s, -ms-transform .2s, -webkit-transform .2s, transform .2s;
+    width: auto;
+    opacity: 1
+}
+.vote{
+    background-color: lightcoral;
+    line-height: 20px;
+    font-size: 16px;
+    text-align: center;
+    padding: 2px 8px;
+    margin-left: 20%;
+    position: relative;
+    margin-right: 10%;
+    touch-action: manipulation;
+    transition: box-shadow .3s, -ms-transform .2s, -webkit-transform .2s, transform .2s;
+    width: auto;
+    opacity: 1
+}
+
+#like:hover{
+   opacity: 0.8;
+   background-color: lightgreen
+}
+#seearticlebutton:hover{
+    opacity: 0.8;
+    background-color: #a6f1a6
+ }
+
+#dislike:hover{
+    opacity: 0.8;
+    background-color: crimson;
+    /* color: whitesmoke */
+}
