@@ -33,16 +33,14 @@ function App() {
       <Routes>      
       <Route path="/topics/:topic_id" element={<ArticlesByTopic articles={articles}/>}/>
       <Route path="/" element={<ArticleList articles={articles} />}/>
-      </Routes>    
       
-      <Routes>
       <Route path="/" element={<ArticleList/>}/>
       <Route path="/articles/:article_id" element={<SingleArticle/>}/>
       </Routes>
       
       
       
-      </BrowserRouter>
+ 
     
     </div>
   );
