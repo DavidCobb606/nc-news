@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const ArticleCards = ({article}) => {
 
-  
+
     return(
 
         <div>
@@ -12,7 +12,7 @@ const ArticleCards = ({article}) => {
             <span id="articlebody">{article.body} </span>
             <p id="topic"> topic: {article.topic} </p>
             <p id="articleauthor">Posted by {article.author} </p>
-          <Link to={`/articles/${article.article_id}`}><button>See item</button></Link>
+          <Link to={`/articles/${article.article_id}`} ><button>See item</button></Link>
                 
                 
 

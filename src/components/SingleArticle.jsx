@@ -4,49 +4,64 @@ import { getArticleById, getVotes } from "../apifunctions"
 import ArticleCards from "./ArticleCards"
 import { alterServerVotes } from "../apifunctions"
 import UpvoteButton from "./UpvoteButton"
+import { increaseServerVotes } from "../apifunctions"
+import { decreaseServerVotes } from "../apifunctions"
 
 
-const SingleArticle = () => {
+const SingleArticle = ({originalvotes}) => {
 
     const [article, setArticle] = useState([])
     const {article_id} = useParams()
     const [isLoading, setIsLoading] = useState(true)
-    const [votes, setVotes] = useState(0)  
+    const [votes, setVotes] = useState(originalvotes)  
+    const [error, setError] = useState(null)
 
- 
 
-    const updateVotes = () => {
+
+    const upVote = () => {
 
         setVotes((votes) => votes+1)
-        alterServerVotes(article_id, votes)
-        .then(({data: {articles}})=> {
-            
-            return setVotes(articles.votes)
+        increaseServerVotes(article_id, votes)
+        .catch((err) => {
+            setVotes((votes) => votes-1)
+            setError("Something went wrong, please try again")
         })
 
-      } 
- console.log(votes)
+    } 
+
+    const downVote = () => {
+        
+        setVotes((votes) => votes-1)
+        decreaseServerVotes(article_id, votes)
+        .catch((err) => {
+            setVotes((votes) => votes+1)
+            setError("Something went wrong, please try again")
+        })
+
+    }
 
 useEffect(() => {
 
     getArticleById(article_id)
-    .then(({data: {articles}}) => {
-       return setArticle(articles)
-       
+    .then(({data: {articles}}) => {        
+        setVotes(articles[0].votes)
+        setArticle(articles)
+        setIsLoading(false)
     })
-    .catch((err) => {
-        
-    })
-}, [article_id])
+    
+   
+}, [])
 
-// if (isLoading){
-//     return <h2>Loading...</h2>
-// }
-console.log(votes)
 
-return (
 
-<div>
+
+if (error){
+    return <p>{error}</p>
+}
+
+return (<div>
+
+
 
     
     <ul>
@@ -64,9 +79,9 @@ return (
 
 
  <div className="votemiddle"><h2>Votes: {votes}</h2> </div>
-        <button className="vote" id="like" onClick={updateVotes}>Like</button>
+        <button className="vote" id="like" onClick={upVote}>Like</button>
             
-        <button className="vote" id="dislike" onClick={updateVotes}>Dislike </button>
+        <button className="vote" id="dislike" onClick={downVote}>Dislike </button>
         </article>
             </div>           
                   

@@ -1,5 +1,5 @@
 const UpvoteButton = ({votes}) => {
-console.log(votes)
+
     return(
         <></>
     )
