@@ -7,6 +7,7 @@ const ArticleCards = ({article}) => {
     return(
 
         <div>
+            
         <article id="articlecard">
             <p id="articletitle"><b><em>{article.title}</em></b></p>
             <span id="articlebody">{article.body} </span>

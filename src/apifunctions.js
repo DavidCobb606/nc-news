@@ -1,24 +1,27 @@
 import axios, {AxiosHeaders} from "axios";
 import { UNSAFE_enhanceManualRouteObjects } from "react-router-dom";
 
-export const getAllArticles = () => {
+export const getAllArticles = (orderByURL,sortByURL) => {
 
-    return axios.get("https://backend-server-6006.herokuapp.com/api/articles")
-    .then((res)=>{        
+    return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/`+orderByURL+sortByURL)
+    .then((res)=>{ 
+        console.log("called")        
         return res
+         
     })
 }
 
-export const getArticlesByTopic = (topic_id) => {
 
-    return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/?topic=${topic_id}`)
+
+export const getArticlesByTopic = (topic_id, orderByURL, sortByURL) => {
+
+    return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/?topic=${topic_id}`+"&" + orderByURL.slice(1)+sortByURL)
 }
 
 
 export const getArticleById = (article_id) => {
     return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}`)
-    .then((res) =>{
-        
+    .then((res) =>{      
    
         return res
     })    
@@ -60,4 +63,5 @@ export const postComment = (article_id, newComment) => {
        return error
     })
 }
+
 
