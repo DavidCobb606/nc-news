@@ -10,7 +10,7 @@ return(
     <h1>All Articles</h1>
     <ul>    
         {articles.map((article, index) => {
-            return  <ArticleCards key={index} article={article} />
+            return  <ArticleCards key={index} article={article} articles={articles}/>
                   
             })}
     </ul>

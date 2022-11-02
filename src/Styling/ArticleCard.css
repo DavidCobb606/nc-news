@@ -44,6 +44,37 @@ h2{
     text-decoration: underline 2px;
 }
 
+#articlecard {
+    border-style: solid;
+    border-width: 5px;
+    padding: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-color: lightcoral;
+    background-color: whitesmoke
+    
+}
+
+#articletitle{
+font-size: 22px;
+font-weight: bold;
+text-align: center;
+text-decoration: underline 2px;
+border-style: transparent;
+border-width: 0.2px;
+margin-left: 25%;
+margin-right: 25%;
+border-color: lightcoral
+
+}
+
+#articlebody{
+    text-align: left
+
+}
+
 .votemiddle{
     text-align:center;
     position: relative;
@@ -67,6 +98,7 @@ h2{
     width: auto;
     opacity: 1
 }
+
 .vote{
     background-color: lightcoral;
     line-height: 20px;
@@ -96,3 +128,4 @@ h2{
     background-color: crimson;
     /* color: whitesmoke */
 }
+
