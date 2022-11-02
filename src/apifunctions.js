@@ -1,4 +1,5 @@
 import axios, {AxiosHeaders} from "axios";
+import { UNSAFE_enhanceManualRouteObjects } from "react-router-dom";
 
 export const getAllArticles = () => {
 
@@ -26,7 +27,7 @@ export const getArticleById = (article_id) => {
 export const getCommentsForArticles = (article_id) => {
     return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}/comments`)
     .then((res) => {
-        console.log(res.data.articles)
+        
         return res
     })
 }
@@ -46,5 +47,17 @@ export const decreaseServerVotes = (article_id, votes) => {
    
        return res
         })
+}
+
+export const postComment = (article_id, newComment) => {
+    
+      return axios.post(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}/comments`, {body: newComment, author: "cooljmessy"})
+    .then((res) => {
+      
+        return res
+    })
+    .catch((error) => {
+       return error
+    })
 }
 

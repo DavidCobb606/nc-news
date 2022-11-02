@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getArticleById, getCommentsForArticles, increaseServerVotes, decreaseServerVotes } from "../apifunctions"
+import { getArticleById, getCommentsForArticles, increaseServerVotes, decreaseServerVotes, postComment } from "../apifunctions"
 
 const SingleArticle = ({originalvotes}) => {
 
@@ -10,56 +10,73 @@ const SingleArticle = ({originalvotes}) => {
     const [votes, setVotes] = useState(originalvotes)  
     const [error, setError] = useState(null)
     const [comments, setComments] = useState([])
+    const [newComment, setNewComment] = useState("")
+    const [additionalComments, setAdditionalComments] = useState()
 
+    
+    
 
     const upVote = () => {
-
         setVotes((votes) => votes+1)
         increaseServerVotes(article_id, votes)
         .catch((err) => {
             setVotes((votes) => votes-1)
             setError("Something went wrong, please try again")
         })
-
     } 
 
-    const downVote = () => {
-        
+    const downVote = () => {    
+          
         setVotes((votes) => votes-1)
         decreaseServerVotes(article_id, votes)
         .catch((err) => {
             setVotes((votes) => votes+1)
             setError("Something went wrong, please try again")
         })
-
     }
 
-useEffect(() => {
+    useEffect(() => {
+        setIsLoading(true)
+        getArticleById(article_id)
+        .then(({data: {articles}}) => {        
+            setVotes(articles[0].votes)
+            setArticle(articles)
+            setIsLoading(false)
+        })
+        .catch((err) => {
+            return (err)
+        })
+    }, [])
 
-    getArticleById(article_id)
-    .then(({data: {articles}}) => {        
-        setVotes(articles[0].votes)
-        setArticle(articles)
-        setIsLoading(false)
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-}, [])
+    useEffect(() => {
+        getCommentsForArticles(article_id)
+        .then(({data: {articles}}) => {
+            setComments(articles)
+            })
+    }, [additionalComments])
 
-useEffect(() => {
 
-    getCommentsForArticles(article_id)
-    .then(({data: {articles}}) => {
-        
-        setComments(articles)
 
-    })
 
-}, [comments])
+    const handleSubmit = (event) => {
+        setIsLoading(true)
+         postComment(article_id, newComment)
+            .then(({data:articles}) => {
+            setAdditionalComments(articles.comments)
+            setIsLoading(false)
+            
+        })
+        event.preventDefault()
+    }   
+
+
     if (error){
     return <p>{error}</p>
-}
+    }
+
+    if(isLoading){
+        return <h2>Loading...</h2>
+    }
 return (
 
 <div>    
@@ -75,12 +92,21 @@ return (
         <button className="vote" id="like" onClick={upVote}>Like</button>
             
         <button className="vote" id="dislike" onClick={downVote}>Dislike </button>
-            </article>  
+            </article> 
                    
             
             </>                 
         })} 
         <h2>Comments</h2>
+        <div>        
+            <form onSubmit={handleSubmit}>
+              
+                <label id="writecommentinfo"><h3><em>Write your comment below. Increase textbox size by dragging on the bottom right corner.</em> </h3></label><br></br>
+                <textarea id="commentbox"required onChange={(event) =>setNewComment(event.target.value)}></textarea><br/>
+                <button  id="submitcommentbutton" type="submit" >Submit </button>                    
+        
+        </form>
+        </div>
         {comments.map((comment, index) => {
             return <>
            
@@ -88,8 +114,7 @@ return (
                 <p id="commentbody">{comment.body}</p>
                 <p id ="commentauthor">Author: {comment.author}</p>
                 <p id="votes">Votes: {comment.votes} </p> 
-                <p id="topic"> Topic: {article.topic} </p>
-            <p id="earticleauthor">Posted by {article.author} </p> 
+                <p id="earticleauthor">Posted by {comment.author} </p> 
             </article>
             
             </>
