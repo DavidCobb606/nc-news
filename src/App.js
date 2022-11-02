@@ -90,8 +90,13 @@ function App() {
      
       <Header/>
       <Nav/>
-    
-      <div id="dropdowndiv">  <button id="dropdown"onClick=               {handleClickSortBy}>Sort By</button>
+    <div id="descdropdown"><button id="ascdesc"className={activeDesc}onClick={handleClickDesc}>Descending</button>      
+      </div> <div id="ascdropdown"> <button id="ascdesc"className={activeAsc}onClick={handleClickAsc}>Ascending</button>  
+       
+      <div id="dropdowndiv">  <button id="dropdown"onClick=               {handleClickSortBy}>Sort By</button> 
+
+         
+      </div>
         {openMenu ? (
         <ul className="menu">
           <li><button className={activeDate}id="smallerbutton" onClick={sortByDate}>Date </button></li>
@@ -102,11 +107,7 @@ function App() {
       ): null } 
       </div>
 
-      <div id="descdropdown"><button id="dropdown"className={activeDesc}onClick={handleClickDesc}>Descending</button>      
-      </div>
-
-      <div id="ascdropdown"> <button id="dropdown"className={activeAsc}onClick={handleClickAsc}>Ascending</button>       
-      </div>
+      
     
 
       <Routes>      
