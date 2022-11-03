@@ -1,12 +1,7 @@
 import {Link} from "react-router-dom";
 import "../Styling/Nav.css"
-import {useState} from "react"
 
 const Nav = () => {
-
-
-  
-
  return (
     <ul id="nav">
             
@@ -15,9 +10,8 @@ const Nav = () => {
         <Link id="second" key={2} to={"/topics/coding"}>Coding</Link>&nbsp;&nbsp;
         <Link id="third" key ={3} to={"/topics/football"}>Football </Link> &nbsp;&nbsp;
         <Link id="fourth" key={4} to={"/topics/cooking"}>Cooking </Link>
-       
-        
-  </ul>
+      
+    </ul>
     )
 }
 

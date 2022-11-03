@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom"
 import { getArticlesByTopic } from "../apifunctions";
 import ArticleCards from "./ArticleCards";
 
-const ArticlesByTopic = ({articles, sortByURL, orderByURL}) => {
+const ArticlesByTopic = ({articles}) => {
 
   const [topic, setTopic] = useState([]);
   const [err, setErr] = useState(false)
@@ -12,17 +12,16 @@ const ArticlesByTopic = ({articles, sortByURL, orderByURL}) => {
 
   useEffect(() => {
 
-    getArticlesByTopic(topic_id, orderByURL, sortByURL)
+    getArticlesByTopic(topic_id)
     .then(({data: {articles}}) => {
         setTopic(articles)
         setIsLoading(false)
     })
     .catch((err) => {
-      
         setErr(true)
     })
 
-  }, [topic_id, orderByURL, sortByURL])
+  }, [topic_id])
   
   if(err){    
     return <h1>Bad Request</h1>
