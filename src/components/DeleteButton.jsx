@@ -5,10 +5,7 @@ const DeleteButton = ({comment_id, deletedComment, setCommentsToDelete}) => {
 
     const [isLoading, setIsLoading] = useState(false)
     
-     useEffect(() => {
-        setIsLoading(false)
-    }, [deletedComment])
-
+    
     const deleteFunction = () => {
         
         setIsLoading(true)
