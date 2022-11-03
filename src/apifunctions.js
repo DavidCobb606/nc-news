@@ -69,7 +69,7 @@ export const postComment = (article_id, newComment) => {
 export const deleteCommentFromServer = ( comment_id) => {
 
 
-    return axios.delete(`https://backend-server-6006.herokuapp.com/api/comments/${comment_id}`)
+    return myApi.delete(`/comments/${comment_id}`)
     .then((res) => {
         return res
     })
