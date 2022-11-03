@@ -1,31 +1,36 @@
 import axios, {AxiosHeaders} from "axios";
 import { UNSAFE_enhanceManualRouteObjects } from "react-router-dom";
 
-export const getAllArticles = () => {
+const myApi = axios.create({
+    baseURL: `https://backend-server-6006.herokuapp.com/api`
+})
 
-    return axios.get("https://backend-server-6006.herokuapp.com/api/articles")
-    .then((res)=>{        
+export const getAllArticles = (orderByURL,sortByURL) => {
+
+    return myApi.get(`/articles/`+orderByURL+sortByURL)
+    .then((res)=>{ 
+           
         return res
+         
     })
 }
 
-export const getArticlesByTopic = (topic_id) => {
+export const getArticlesByTopic = (topic_id, orderByURL, sortByURL) => {
 
-    return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/?topic=${topic_id}`)
+    return myApi.get(`/articles/?topic=${topic_id}`+"&" + orderByURL.slice(1)+sortByURL)
 }
 
 
 export const getArticleById = (article_id) => {
-    return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}`)
-    .then((res) =>{
-        
+    return myApi.get(`/articles/${article_id}`)
+    .then((res) =>{      
    
         return res
     })    
 }
 
 export const getCommentsForArticles = (article_id) => {
-    return axios.get(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}/comments`)
+    return myApi.get(`/articles/${article_id}/comments`)
     .then((res) => {
         
         return res
@@ -33,7 +38,7 @@ export const getCommentsForArticles = (article_id) => {
 }
 export const increaseServerVotes = (article_id) => {
 
-    return axios.patch(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}`, {inc_votes: 1 })
+    return myApi.patch(`/articles/${article_id}`, {inc_votes: 1 })
     .then((res) => {
  
        return res
@@ -42,7 +47,7 @@ export const increaseServerVotes = (article_id) => {
 
 export const decreaseServerVotes = (article_id, votes) => {
 
-    return axios.patch(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}`, {inc_votes: -1 })
+    return myApi.patch(`/articles/${article_id}`, {inc_votes: -1 })
     .then((res) => {
    
        return res
@@ -51,7 +56,7 @@ export const decreaseServerVotes = (article_id, votes) => {
 
 export const postComment = (article_id, newComment) => {
     
-      return axios.post(`https://backend-server-6006.herokuapp.com/api/articles/${article_id}/comments`, {body: newComment, author: "cooljmessy"})
+      return myApi.post(`articles/${article_id}/comments`, {body: newComment, author: "cooljmessy"})
     .then((res) => {
       
         return res
@@ -60,4 +65,5 @@ export const postComment = (article_id, newComment) => {
        return error
     })
 }
+
 
