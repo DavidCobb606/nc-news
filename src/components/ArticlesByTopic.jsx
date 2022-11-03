@@ -27,7 +27,7 @@ const ArticlesByTopic = ({articles, sortByURL, orderByURL}) => {
   }
 
   if (isLoading){
-    return <h2> Loading... artbytopic</h2>
+    return <h2> Loading...</h2>
   }
  
   return(

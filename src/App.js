@@ -36,7 +36,7 @@ function App() {
     return <h1>{err}</h1>
    }
 
-   if (isLoading) return (<p> Loading..?.</p>)
+   if (isLoading) return (<p> Loading...</p>)
 
   
 
