@@ -6,7 +6,7 @@ const DeleteButton = ({comment_id, deletedComment, setCommentsToDelete}) => {
     const [isLoading, setIsLoading] = useState(false)
     
     
-    const deleteFunction = () => {
+    const handleDelete = () => {
         
         setIsLoading(true)
         deleteCommentFromServer(comment_id)
@@ -22,7 +22,7 @@ const DeleteButton = ({comment_id, deletedComment, setCommentsToDelete}) => {
 return (
 <div>
 
-<button onClick={deleteFunction}>Delete</button>
+<button onClick={handleDelete}>Delete</button>
 
 
 </div>
