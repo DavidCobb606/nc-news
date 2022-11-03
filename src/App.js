@@ -27,7 +27,7 @@ function App() {
       }) 
    }, [orderByURL, sortByURL])
 
-   if (isLoading) return (<p> Loading...</p>)
+   if (isLoading) return (<span className="loader"></span>)
 
   return (
     <div className="App">

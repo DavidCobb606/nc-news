@@ -29,12 +29,13 @@ const ArticlesByTopic = ({articles, sortByURL, orderByURL}) => {
   }
 
   if (isLoading){
-    return <h2> Loading...</h2>
+    return  <span className="loader"></span>
   }
  
   return(
 <div>
     <h1> {topic_id} Articles</h1>
+    
     <ul>
         {topic.map((article, index) => {           
             return <ArticleCards key={index} article={article}   />            

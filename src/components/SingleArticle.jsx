@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticleById, getCommentsForArticles, increaseServerVotes, decreaseServerVotes, postComment, deleteCommentFromServer } from "../apifunctions"
 import DeleteButton from "./DeleteButton"
-
+import "../Styling/singlearticle.css"
 const SingleArticle = () => {
 
     const [article, setArticle] = useState([])
@@ -79,7 +79,7 @@ const SingleArticle = () => {
     }
 
     if(isLoading){
-        return <h2>Loading...</h2>
+        return <span className="loader"></span>
     }
 return (
 
