@@ -72,13 +72,13 @@ function App() {
   useEffect(() => {
     getAllArticles(orderByURL, sortByURL)
       .then(({data: {articles}}) => {
-        console.log("received")
+        
          setArticles(articles)
          setIsLoading(false)
       }) 
    }, [orderByURL, sortByURL])
 
-   console.log(articles)
+  
 
    
  

@@ -18,7 +18,7 @@ const ArticlesByTopic = ({articles, sortByURL, orderByURL}) => {
         setIsLoading(false)
     })
     .catch((err) => {
-      console.log(err)
+      
         setErr(true)
     })
 
