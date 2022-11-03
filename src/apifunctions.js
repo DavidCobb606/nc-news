@@ -61,3 +61,10 @@ export const postComment = (article_id, newComment) => {
     })
 }
 
+export const deleteCommentFromServer = (article_id, comment_id) => {
+
+
+    return axios.delete(``)
+
+}
+

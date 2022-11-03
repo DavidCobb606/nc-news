@@ -69,6 +69,11 @@ const SingleArticle = ({originalvotes}) => {
         event.preventDefault()
     }   
 
+    const deleteComment = () =>{
+        
+
+
+    }
 
     if (error){
     return <p>{error}</p>
@@ -111,10 +116,11 @@ return (
             return <>
            
             <article id="comment">
-                <p id="commentbody">{comment.body}</p>
+                <p id="commentbody"><h3>{comment.body}</h3></p>
                 <p id ="commentauthor">Author: {comment.author}</p>
                 <p id="votes">Votes: {comment.votes} </p> 
-                <p id="earticleauthor">Posted by {comment.author} </p> 
+                <p id="articleauthor">Posted by {comment.author} </p> 
+                {comment.author === "cooljmessy" ? <button id="delete" onClick={deleteComment}>delete comment</button> : null}
             </article>
             
             </>
