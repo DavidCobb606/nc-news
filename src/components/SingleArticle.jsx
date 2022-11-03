@@ -44,7 +44,8 @@ const SingleArticle = ({originalvotes}) => {
             setIsLoading(false)
         })
         .catch((err) => {
-            return (err)
+            console.log(err)
+            setError(err.code)
         })
     }, [])
 
@@ -71,7 +72,7 @@ const SingleArticle = ({originalvotes}) => {
 
 
     if (error){
-    return <p>{error}</p>
+    return <h2>{error}</h2>
     }
 
     if(isLoading){

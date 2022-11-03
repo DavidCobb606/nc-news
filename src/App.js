@@ -9,12 +9,14 @@ import { getAllArticles} from "./apifunctions";
 import SingleArticle from "./components/SingleArticle";
 import SortingMenu from "./components/SortingMenu";
 import OrderMenu from "./components/OrderMenu";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [articles, setArticles] = useState("")
   const [isLoading, setIsLoading] = useState(true)
   const [orderByURL, setOrderByURL] = useState("?orderBy=desc")
   const [sortByURL, setSortByURL] = useState("&sort_by=created_at")
+  const [err, setErr] = useState(false)
 
 
 
@@ -24,10 +26,19 @@ function App() {
         
          setArticles(articles)
          setIsLoading(false)
-      }) 
+      })
+      .catch((err) => {
+        setErr(err.code)
+      })
    }, [orderByURL, sortByURL])
 
-   if (isLoading) return (<p> Loading...</p>)
+   if(err){
+    return <h1>{err}</h1>
+   }
+
+   if (isLoading) return (<p> Loading..?.</p>)
+
+  
 
   return (
     <div className="App">
@@ -40,6 +51,7 @@ function App() {
       <Route path="/topics/:topic_id" element={<ArticlesByTopic orderByURL={orderByURL} sortByURL={sortByURL} articles={articles}/>}/>
       <Route path="/" element={<ArticleList articles={articles} />}/>   
       <Route path="/articles/:article_id" element={<SingleArticle/>}/>
+      <Route path="*" element={<ErrorPage/>}/>
       </Routes>
       
       

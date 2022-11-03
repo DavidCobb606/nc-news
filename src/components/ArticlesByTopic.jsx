@@ -17,11 +17,9 @@ const ArticlesByTopic = ({articles, sortByURL, orderByURL}) => {
         setTopic(articles)
         setIsLoading(false)
     })
-    .catch((err) => {
-      
+    .catch((err) => {      
         setErr(true)
     })
-
   }, [topic_id, orderByURL, sortByURL])
   
   if(err){    
@@ -29,7 +27,7 @@ const ArticlesByTopic = ({articles, sortByURL, orderByURL}) => {
   }
 
   if (isLoading){
-    return <h2> Loading...</h2>
+    return <h2> Loading... artbytopic</h2>
   }
  
   return(
