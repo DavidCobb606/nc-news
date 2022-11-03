@@ -7,11 +7,15 @@ const ArticleCards = ({article}) => {
     return(
 
         <div>
+            
         <article id="articlecard">
             <p id="articletitle"><b><em>{article.title}</em></b></p>
             <span id="articlebody">{article.body} </span>
             <p id="topic"> topic: {article.topic} </p>
             <p id="articleauthor">Posted by {article.author} </p>
+            <p>Number of comments: {article.comment_count}</p>
+            <p>Votes: {article.votes}</p>
+            <p>Created at: {article.created_at}</p>
           <Link to={`/articles/${article.article_id}`}><button id="seearticlebutton">See full article</button></Link>              
                 
 
