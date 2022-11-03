@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getArticleById, getCommentsForArticles, increaseServerVotes, decreaseServerVotes, postComment } from "../apifunctions"
+import { getArticleById, getCommentsForArticles, increaseServerVotes, decreaseServerVotes, postComment, deleteCommentFromServer } from "../apifunctions"
+import DeleteButton from "./DeleteButton"
 
-const SingleArticle = ({originalvotes}) => {
+const SingleArticle = () => {
 
     const [article, setArticle] = useState([])
     const {article_id} = useParams()
     const [isLoading, setIsLoading] = useState(true)
-    const [votes, setVotes] = useState(originalvotes)  
+    const [votes, setVotes] = useState(0)  
     const [error, setError] = useState(null)
     const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState("")
     const [additionalComments, setAdditionalComments] = useState()
+    const [commentsToDelete, setCommentsToDelete] = useState("")
+
+    
 
     
     
@@ -50,14 +54,13 @@ const SingleArticle = ({originalvotes}) => {
     }, [])
 
     useEffect(() => {
+        setIsLoading(true)
         getCommentsForArticles(article_id)
         .then(({data: {articles}}) => {
             setComments(articles)
             })
-    }, [additionalComments])
-
-
-
+            setIsLoading(false)
+    }, [additionalComments, commentsToDelete])
 
     const handleSubmit = (event) => {
         setIsLoading(true)
@@ -69,8 +72,9 @@ const SingleArticle = ({originalvotes}) => {
         })
         event.preventDefault()
     }   
+    
 
-
+   
     if (error){
     return <h2>{error}</h2>
     }
@@ -112,10 +116,11 @@ return (
             return <>
            
             <article id="comment">
-                <p id="commentbody">{comment.body}</p>
+                <h3 id="commentbody">{comment.body}</h3>
                 <p id ="commentauthor">Author: {comment.author}</p>
                 <p id="votes">Votes: {comment.votes} </p> 
-                <p id="earticleauthor">Posted by {comment.author} </p> 
+                <p id="articleauthor">Posted by {comment.author} </p> 
+                {comment.author === "cooljmessy" ? <DeleteButton comment_id={comment.comment_id} setCommentsToDelete={setCommentsToDelete} commentsToDelete={commentsToDelete}/> : null}
             </article>
             
             </>
