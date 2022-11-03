@@ -119,7 +119,7 @@ return (
                 <p id ="commentauthor">Author: {comment.author}</p>
                 <p id="votes">Votes: {comment.votes} </p> 
                 <p id="articleauthor">Posted by {comment.author} </p> 
-                {/* {comment.author === "cooljmessy" ? <DeleteButton comment_id={comment.comment_id}/> : null} */}
+                {comment.author === "cooljmessy" ? <DeleteButton comment_id={comment.comment_id} setCommentsToDelete={setCommentsToDelete} commentsToDelete={commentsToDelete}/> : null}
             </article>
             
             </>
