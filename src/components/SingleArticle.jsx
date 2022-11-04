@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getArticleById, getCommentsForArticles, increaseServerVotes, decreaseServerVotes, postComment, deleteCommentFromServer } from "../apifunctions"
-import DeleteButton from "./DeleteButton"
+import { getArticleById, getCommentsForArticles} from "../apifunctions"
 import "../Styling/singlearticle.css"
 import CommentsCard from "./CommentsCard"
 import SingleArticleCard from "./SingleArticleCard"
 import PostComments from "./PostComments"
 
-const SingleArticle = () => {
+const SingleArticle = ({users}) => {
 
     const [article, setArticle] = useState([])
     const {article_id} = useParams()
@@ -28,7 +27,7 @@ const SingleArticle = () => {
             setIsLoading(false)
         })
         .catch((err) => {
-            return (err)
+            setError(err)
         })
     }, [])
 
@@ -43,23 +42,20 @@ const SingleArticle = () => {
 
     if(isLoading) return <h2 className="loader"></h2>
     
+    if(error) return <h2>{error}</h2>
 return (
 
 <div>    
    
-    <SingleArticleCard article={article} votes={votes} article_id={article_id}/>
-    <PostComments setIsLoading={setIsLoading} newComment={newComment} setAdditionalComments={setAdditionalComments} article_id={article_id}setNewComment={setNewComment}/>
+    <SingleArticleCard article={article} votes={votes} article_id={article_id} setVotes={setVotes}/>    
+    
+    <PostComments users={users}setIsLoading={setIsLoading} newComment={newComment} setAdditionalComments={setAdditionalComments} article_id={article_id}setNewComment={setNewComment}/>
+    
     <CommentsCard comments={comments} setCommentsToDelete={setCommentsToDelete} commentsToDelete={commentsToDelete}/>          
 
 </div>
 
     )   
 }
-
-
-
-
-
-
 
 export default SingleArticle

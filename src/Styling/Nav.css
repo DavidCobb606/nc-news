@@ -4,17 +4,22 @@
 
 #nav{
     border-style: solid;
-    border-width: 1px;
+    border-width: 3px;
     font-size: 25px;
-    padding: 1%;
+    border-radius: 10px;
+    padding: 2%;
     border-color: lightcoral;
     word-spacing: 0px;
     color: black;
     text-align: center;
-    margin-right: 20%;
-    margin-left: 20%;
+    margin-right: 15%;
+    margin-left: 0;
+    margin-top:0;
+    background-color: whitesmoke;
     
 }
+
+
 #topicselect{
     margin-top: 0px;
     margin-bottom: 5px;
@@ -22,86 +27,55 @@
     
 }
 
-#first{
-    color: black; 
+#topic{
+    appearance: none;
+    background-color: transparent;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #3B3B3B;
+    cursor: pointer;
+    display: inline-flex;
+     font-size: 25px;
+    font-weight: 600;
+    line-height: normal;
+    margin-left:5%;
+    margin-right:10%;
+    min-height: 20px;
+    min-width: 200px;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 20%;
+    will-change: transform;
    
 }
-#second{
-    color: black; 
-}
-#third{
-    color: black; 
-}
-#fourth{
-    color: black; 
+
+#topic:hover{
+    color: #fff;
+    background-color: #1A1A1A;
+ 
 }
 
-.active{
-background-color: lightgreen;
-opacity: 1
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 
-}
-
-
-#dropdown{
-    border-style: solid;
-    border-width: 1px;
-    font-size: 16px;
-    padding: 1%;
-    border-color: black;
-    word-spacing: 0px;
-    color: black;
-    text-align: center;
-    margin-right: 50%;
-    margin-left: 0%;
-    margin-top: 1%;
-    width: 10%;
-    box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, .1)0 6px 20px;
     
 }
 
-#dropdown:hover{
-    box-shadow: #121212 0 0 0 2px, transparent 0 0 0 0;
-}
-#ascdesc{
-    border-style: solid;
-    border-width: 1px;
-    font-size: 16px;
-    padding: 0.8%;
-    border-color: black;
-    word-spacing: 0px;
-    color: black;
-    text-align: center;
-    margin-right: 0;
-    margin-left: 0;
-    margin-top: 0%;
-    margin-bottom: 0;
-    width: 10%;
-    box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, .1)0 6px 20px;
-}
-
-#smallerbutton{
-    border-style: solid;
-    border-width: 0.5px;
-    font-size: 14px;
-    padding: 0.5%;
-    border-color: black;
-    word-spacing: 0px;
-    color: black;
-    text-align: center;
-    margin-right: 50%;
-    margin-left: 0%;
-    margin-top: 0%;
-    width: 10%;
-    box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, .1)0 6px 20px;
+.flex-child{
+    flex: 0.1;
+    margin-left: 10%;
+   
 }
 
 
-#ascdesc:hover {
-    box-shadow: #121212 0 0 0 1px, transparent 0 0 0 0;
-  }
 
-
-#smallerbutton:hover {
-  box-shadow: #121212 0 0 0 1px, transparent 0 0 0 0;
-}

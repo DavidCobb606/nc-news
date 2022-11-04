@@ -1,6 +1,4 @@
 import "../Styling/ArticleList.css";
-import {useEffect, useState} from "react";
-import {getAllArticles} from "../apifunctions"
 import ArticleCards from "./ArticleCards";
 
 const ArticleList = ({articles}) => {

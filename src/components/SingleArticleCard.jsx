@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { increaseServerVotes } from "../apifunctions"
 import { decreaseServerVotes } from "../apifunctions"
+import "../Styling/singlearticlecard.css"
 
 
-const SingleArticleCard = ({article, article_id}) => {
-
-    const [votes, setVotes] = useState(0)  
+const SingleArticleCard = ({article, article_id, votes, setVotes}) => {
+ 
     const [error, setError] = useState(null)
 
     const upVote = () => {
@@ -32,16 +32,17 @@ const SingleArticleCard = ({article, article_id}) => {
 return(
     <div>
          {article.map((article, index) => {           
-            return <>               
+            return <>    
+                       
                    <article id="articlecard">
+            <p id="postedby">Posted by {article.author === "cooljmessy" ? <>you</>: article.author}</p>
+           
             <p id="articletitle"><b><em>{article.title}</em></b></p>
             <span id="articlebody">{article.body} </span>
-            <p id="topic"> topic: {article.topic} </p>
-            <p id="earticleauthor">Posted by {article.author} </p> <p id="comments"> {}</p>  
+           
+             <p id="comments"> {}</p>  
             <div className="votemiddle"><h2>Votes: {votes}</h2> </div>
-        <button className="vote" id="like" onClick={upVote}>Like</button>
-            
-        <button className="vote" id="dislike" onClick={downVote}>Dislike </button>
+        <button className="vote" id="voteup" onClick={upVote}>Vote Up</button> <button className="vote" id="votedown" onClick={downVote}>Vote Down </button>
             </article> 
                    
             

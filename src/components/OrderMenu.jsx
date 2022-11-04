@@ -1,7 +1,8 @@
 import { useState } from "react"
+import "../Styling/OrderMenu.css"
 
 
-const OrderMenu = ({orderByURL, setOrderByURL}) => {
+const OrderMenu = ({setOrderByURL}) => {
 
     const [descending, setDescending] = useState(true)
     const [activeAsc, setActiveAsc] = useState("")
@@ -24,15 +25,15 @@ const OrderMenu = ({orderByURL, setOrderByURL}) => {
         setOrderByURL("?orderBy=desc")
     
       }
-    return(
-        <>
-             <div id="descdropdown"><button id="ascdesc"className={activeDesc}onClick={handleClickDesc}>Descending</button>
-             </div>      
-     <div id="ascdropdown"> <button id="ascdesc"className={activeAsc}onClick={handleClickAsc}>Ascending</button>  
-          </div>
+  return(
+    <>
+      <div id="descdropdown"><button id="ascdesc"className={activeDesc}onClick={handleClickDesc}>Descending</button>
+      </div>      
+      <div id="ascdropdown"> <button id="ascdesc"className={activeAsc}onClick={handleClickAsc}>Ascending</button>  
+      </div>
           
           
-          </>
+    </>
     )
 }
 

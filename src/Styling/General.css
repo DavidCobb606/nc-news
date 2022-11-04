@@ -1,6 +1,53 @@
 * {
        font-family: "Open Sans", sans-serif;
     font-weight: 50;
-    background-color: ;
-
 }
+
+.active{
+    background-color: lightcoral !important;
+    color: white;
+    border-width: 2px;
+    border-color: black !important;
+    
+    }
+
+.loader {
+        width: 60px;
+        height: 60px;
+        border: 5px solid black;
+        border-bottom-color: lightcoral;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+     
+        justify-content: center;
+        margin-left: 50%;
+        margin-right: 30%;
+        padding: 10px;
+}        
+     
+ @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+        }
+    100%{
+        transform: rotate(360deg);
+        }
+    } 
+
+.app{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: min-content auto auto;
+    grid-template-areas: "header" "nav" "content";
+}
+
+@media only screen and (min-width: 600px){
+    .App{
+        grid-template-columns: 25% 75%;
+        grid-template-rows: min-content-auto;
+        grid-template-areas: "header header" "nav content";
+    }
+}
+

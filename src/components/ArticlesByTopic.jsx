@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom"
 import { getArticlesByTopic } from "../apifunctions";
 import ArticleCards from "./ArticleCards";
 
-const ArticlesByTopic = ({articles, sortByURL, orderByURL}) => {
+const ArticlesByTopic = ({sortByURL, orderByURL}) => {
 
   const [topic, setTopic] = useState([]);
   const [err, setErr] = useState(false)

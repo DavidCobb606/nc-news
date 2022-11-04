@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "../Styling/SortingMenu.css"
 
 
 const SortingMenu = ({sortByURL, setSortByURL}) => {
@@ -46,9 +47,9 @@ const SortingMenu = ({sortByURL, setSortByURL}) => {
         <div id="dropdowndiv">  <button id="dropdown"onClick=               {handleClickSortBy}>Sort By</button> </div>
         {openMenu ? (
         <ul className="menu">
-          <li><button className={activeDate}id="smallerbutton" onClick={sortByDate}>Date </button></li>
-          <li> <button id="smallerbutton"className={activeCommentCount} onClick={sortByCommentCount}>Comment Count</button> </li>
-          <li> <button id="smallerbutton" onClick={sortByVotes} className={activeVotes}>Votes</button> </li>
+          <button className={activeDate}id="smallerbutton" onClick={sortByDate}>Date </button>
+          <button id="smallerbutton"className={activeCommentCount} onClick={sortByCommentCount}>Comment Count</button> 
+          <button id="smallerbutton" onClick={sortByVotes} className={activeVotes}>Votes</button>
           
         </ul>
       ): null } 

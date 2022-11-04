@@ -29,10 +29,13 @@ function App() {
   return (
     <div className="App">     
       <Header/>
-      <Nav/>
-      <SortingMenu setSortByURL={setSortByURL} sortByURL={sortByURL}/>
-      <OrderMenu orderByURL={orderByURL} setOrderByURL={setOrderByURL} />
-      <Routes>      
+      <div id="formatting">
+      <Nav setSortByURL={setSortByURL} sortByURL={sortByURL} orderByURL={orderByURL} setOrderByURL={setOrderByURL}/>
+      
+       </div>   
+      <Routes>  
+        
+       
       <Route path="/topics/:topic_id" element={<ArticlesByTopic orderByURL={orderByURL} sortByURL={sortByURL} articles={articles}/>}/>
       <Route path="/" element={<Articles articles={articles} />}/>   
       <Route path="/articles/:article_id" element={<SingleArticle/>}/>

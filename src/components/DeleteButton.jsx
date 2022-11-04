@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { deleteCommentFromServer } from "../apifunctions"
 
-const DeleteButton = ({comment_id, deletedComment, setCommentsToDelete}) => {
+const DeleteButton = ({comment_id, setCommentsToDelete}) => {
 
     const [isLoading, setIsLoading] = useState(false)
     
@@ -13,16 +13,16 @@ const DeleteButton = ({comment_id, deletedComment, setCommentsToDelete}) => {
         .then((res)=>{
             
             setCommentsToDelete(res)
-            setIsLoading(false)
+           setIsLoading(false)
         })
     }
 
-    if(isLoading) return <h3>Deleting, please wait</h3>
+    if(isLoading) return <span className="loader"></span>
 
 return (
 <div>
 
-<button onClick={handleDelete}>Delete</button>
+<button class="deletebutton" onClick={handleDelete}>Delete</button>
 
 
 </div>

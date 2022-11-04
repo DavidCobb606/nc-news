@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { postComment } from "../apifunctions"
+import "../Styling/PostComments.css"
 
 
 const PostComments = ({setNewComment, article_id, setIsLoading, newComment, setAdditionalComments}) => {
@@ -28,7 +29,7 @@ const PostComments = ({setNewComment, article_id, setIsLoading, newComment, setA
             <form onSubmit={handleSubmit}>
               
                 <label id="writecommentinfo"><h3><em>Write your comment below. Increase textbox size by dragging on the bottom right corner.</em> </h3></label><br></br>
-                <textarea id="commentbox"required onChange={(event) =>setNewComment(event.target.value)}></textarea><br/>
+                <textarea id="postcommentbox"required onChange={(event) =>setNewComment(event.target.value)}></textarea><br/>
                 <button  id="submitcommentbutton" type="submit" >Submit </button>                    
         
             </form>

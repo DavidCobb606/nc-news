@@ -1,4 +1,5 @@
 import DeleteButton from "./DeleteButton"
+import "../Styling/commentbox.css"
 
 
 const CommentsCard = ({comments, setCommentsToDelete, commentsToDelete}) => {
@@ -8,10 +9,10 @@ const CommentsCard = ({comments, setCommentsToDelete, commentsToDelete}) => {
             {comments.map((comment, index) => {
             return <>           
                 <article id="comment">
-                    <h3 id="commentbody">{comment.body}</h3>
-                    <p id ="commentauthor">Author: {comment.author}</p>
-                    <p id="votes">Votes: {comment.votes} </p> 
-                    <p id="articleauthor">Posted by {comment.author} </p> 
+                    <p id="commentbody">{comment.body}</p>
+                    <p class="commentdetails"> {comment.votes} Votes <br/>
+                    Posted by {comment.author === "cooljmessy" ? <>you</>: comment.author} on {comment.created_at.slice(0, 10)} at {comment.created_at.slice(11, 19)}</p> 
+
                     {comment.author === "cooljmessy" ? <DeleteButton comment_id={comment.comment_id} setCommentsToDelete={setCommentsToDelete} commentsToDelete={commentsToDelete}/> : null}
                 </article>            
             </>
