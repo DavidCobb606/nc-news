@@ -36,13 +36,23 @@ return(
                        
                    <article id="articlecard">
             <p id="postedby">Posted by {article.author === "cooljmessy" ? <>you</>: article.author}</p>
+         
            
             <p id="articletitle"><b><em>{article.title}</em></b></p>
             <span id="articlebody">{article.body} </span>
            
-             <p id="comments"> {}</p>  
-            <div className="votemiddle"><h2>Votes: {votes}</h2> </div>
-        <button className="vote" id="voteup" onClick={upVote}>Vote Up</button> <button className="vote" id="votedown" onClick={downVote}>Vote Down </button>
+        <div class="flex-container"> 
+
+          <div class="flex-child-1" >
+          <button className="vote" id="voteup" onClick={upVote}>Vote Up</button> </div>
+ <div class="flex-child-3">
+           <p id="votesdisplay"> {votes}</p>
+           </div>
+            <div class="flex-child-2">
+          <button className="vote" id="votedown" onClick={downVote}>Vote Down </button>  
+           </div>
+          
+        </div>  
             </article> 
                    
             
