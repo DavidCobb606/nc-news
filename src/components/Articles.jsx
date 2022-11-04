@@ -4,9 +4,6 @@ import {getAllArticles} from "../apifunctions"
 import ArticleCards from "./ArticleCards";
 
 const ArticleList = ({articles}) => {
-
-
-
 return(     
  <div>
     <h1>All Articles</h1>

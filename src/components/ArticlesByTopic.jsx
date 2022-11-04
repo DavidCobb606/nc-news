@@ -17,37 +17,27 @@ const ArticlesByTopic = ({articles, sortByURL, orderByURL}) => {
         setTopic(articles)
         setIsLoading(false)
     })
-    .catch((err) => {
-      
+    .catch((err) => {      
         setErr(true)
     })
 
   }, [topic_id, orderByURL, sortByURL])
   
-  if(err){    
-    return <h1>Bad Request</h1>
-  }
+  if (err) return <h1>Bad Request</h1>
 
-  if (isLoading){
-    return  <span className="loader"></span>
-  }
+  if (isLoading) return  <span className="loader"></span>  
  
   return(
-<div>
-    <h1> {topic_id} Articles</h1>
-    
-    <ul>
+    <div>
+      <h1> {topic_id} Articles</h1>    
+      <ul>
         {topic.map((article, index) => {           
-            return <ArticleCards key={index} article={article}   />            
+            return <ArticleCards key={index} article={article}/>            
         })}
         
-    </ul>
-</div>
-
+      </ul>
+    </div>
   )
-
-
 }
-
 
 export default ArticlesByTopic

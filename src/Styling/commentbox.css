@@ -1,0 +1,13 @@
+#commentbox{
+    border-style: solid;
+    border-width: 1px;
+    padding: 2%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-color: lightcoral;
+    background-color: whitesmoke;
+    align-items: center;
+    font-size: 20x;
+}
