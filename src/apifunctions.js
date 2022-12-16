@@ -1,8 +1,8 @@
 import axios, {AxiosHeaders} from "axios";
-import { UNSAFE_enhanceManualRouteObjects } from "react-router-dom";
+
 
 const myApi = axios.create({
-    baseURL: `https://backend-server-6006.herokuapp.com/api`
+    baseURL: `https://backend-server-uzv8.onrender.com/api/`
 })
 
 export const getAllArticles = (orderByURL,sortByURL) => {

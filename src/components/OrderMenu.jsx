@@ -9,21 +9,17 @@ const OrderMenu = ({setOrderByURL}) => {
     const [activeDesc, setActiveDesc] = useState("active")
 
     const handleClickAsc = () => {
-        setDescending(!descending)
-       
+        setDescending(!descending)       
         setActiveDesc("")
         setActiveAsc("active")
-        setOrderByURL("?orderBy=asc")
-    
+        setOrderByURL("?orderBy=asc")    
       }
     
       const handleClickDesc = () => {
-        setDescending(!descending)
-        
+        setDescending(!descending)        
         setActiveAsc("")
         setActiveDesc("active")
-        setOrderByURL("?orderBy=desc")
-    
+        setOrderByURL("?orderBy=desc")    
       }
   return(
     <>
